@@ -18,13 +18,67 @@ import ContactMe from "./components/ContactMe";
 
 function App() {
   const [open, setOpen] = useState(false);
+  const [openCanvas, setOpenCanvas] = useState(false);
 
   return (
-    <div className="text-gray-500">
-      <Header />
-      <div className="w-full min-h-screen h-auto hero bg-contain bg-no-repeat">
-        <div className="pl-56 pt-20 w-[55%] space-y-7">
-          <h1 className="font-extralight text-6xl">
+    <div className="text-gray-500 w-screen overflow-hidden relative">
+      <div className=" hidden lg:block">
+        <Header openCanvas={openCanvas} setOpenCanvas={setOpenCanvas} />
+      </div>
+      <div
+        className={`${
+          openCanvas === true ? "right-0" : "right-[-100%]"
+        } flex flex-col w-3/4 h-screen absolute top-0 bg-blue-600 z-[1100] transition-all ease-in-out duration-300 p-10 text-white`}
+      >
+        <span
+          onClick={() => {
+            setOpenCanvas(false);
+          }}
+          className="font-semibold self-end cursor-pointer rounded-md px-2 bg-red-600 w-fit text-white mb-6"
+        >
+          x
+        </span>
+        <ul className="flex flex-col space-y-4 font-semibold text-lg mb-10">
+          <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
+            <a href="">About</a>
+          </li>
+          <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
+            <a href="">Projects</a>
+          </li>
+          <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
+            <a href="">Contact</a>
+          </li>
+        </ul>
+        <div className="flex flex-col space-y-5 text-2xl mb-8">
+          <a
+            href=""
+            className="hover:text-blue-600 hover:-translate-y-2 w-fit flex items-center space-x-2 duration-300 ease-in-out"
+          >
+            <FaInstagram />
+            <span className="text-sm">Follow me on Instagram</span>
+          </a>
+          <a
+            href=""
+            className="hover:text-blue-600 hover:-translate-y-2 w-fit flex items-center space-x-2 duration-300 ease-in-out"
+          >
+            <FaFacebook />
+            <span className="text-sm">Follow me on Facebook</span>
+          </a>
+          <a
+            href=""
+            className="hover:text-blue-600 hover:-translate-y-2 w-fit flex items-center space-x-2 duration-300 ease-in-out"
+          >
+            <FaLinkedin />
+            <span className="text-sm">Follow me on LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <div className="w-full lg:min-h-screen lg:h-auto hero bg-contain bg-no-repeat">
+        <div className="lg:hidden">
+          <Header openCanvas={openCanvas} setOpenCanvas={setOpenCanvas} />
+        </div>
+        <div className="p-10 lg:p-0 lg:pl-20 pt-20 w-full lg:w-[55%] space-y-7 text-center lg:text-start">
+          <h1 className="font-extralight text-5xl lg:text-6xl">
             Hi! <br />
             I am Joseph John <br />
             A Front-end Developer <br />
@@ -44,10 +98,10 @@ function App() {
         <img
           src={skills}
           alt=""
-          className="absolute right-[55%] top-[-20%] w-full rotate-[50deg]"
+          className="hidden lg:inline-block absolute right-[55%] top-[-20%] w-full rotate-[50deg]"
         />
-        <div className="flex flex-col w-1/2 relative left-56">
-          <SectionTitle first="Important" second="attributes of my skills" />
+        <div className="flex flex-col lg:w-1/2 relative left-10 lg:left-56">
+          <SectionTitle first="Important attributes" second=" of my skills" />
           <div className="grid lg:grid-cols-2 gap-10">
             <SkillAtrribute
               img={research}
@@ -76,14 +130,14 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="w-full px-56 relative min-h-screen h-auto skills bg-contain bg-no-repeat flex justify-center">
+      <section className="w-full px-10 lg:px-20 relative min-h-screen h-auto skills bg-contain bg-no-repeat flex justify-center">
         {/* <img
           src={bulb}
           alt=""
           className="w-[65%] absolute right-[70%] top-[27%] rotate-90 fill-blue-600"
         /> */}
         <svg
-          className="absolute right-[60%] top-[42%] rotate-[0deg] fill-blue-600"
+          className="hidden lg:inline-flex absolute right-[65%] top-[42%] rotate-[0deg] fill-blue-600"
           version="1.1"
           id="Capa_1"
           xmlns="http://www.w3.org/2000/svg"
@@ -114,10 +168,10 @@ function App() {
           </g>
         </svg>
         <div className="flex flex-col w-full z-[1000]">
-          <div className="relative left-36">
+          <div className="relative lg:left-36">
             <SectionTitle first="Checkout" second="my projects" />
           </div>
-          <div className="w-11/12 space-y-28">
+          <div className="lg:w-11/12 space-y-14 lg:space-y-28">
             <ProjectCard
               img={ktrack}
               title="Project Management System"
@@ -127,7 +181,8 @@ function App() {
             <ProjectCard
               className="lg:relative left-44"
               img={ktrack}
-              title="Project Management System"
+              link="https://k-track.netlify.app"
+              title="Real time delivery tracking"
               description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam atque recusandae commodi soluta ipsa maiores ducimus necessitatibus. Sunt ipsum nobis"
             />
             <ProjectCard
@@ -138,25 +193,24 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="overflow-hidden w-full px-56 pb-10 relative min-h-screen h-auto skills bg-contain bg-no-repeat flex justify-start">
+      <section className="overflow-hidden w-full px-10 lg:px-20 pb-10 relative min-h-screen h-auto skills bg-contain bg-no-repeat flex justify-start">
         <img
           src={idea}
           alt=""
-          className="w-[65%] absolute left-[55%] top-[58%] -rotate-12"
+          className="hidden lg:inline-block w-[65%] absolute left-[55%] top-[58%] -rotate-12"
         />
         <img
           src={thought}
           alt=""
-          className="w-[65%] absolute left-[50%] top-[-30px"
+          className="hidden lg:inline-block w-[65%] absolute left-[50%] top-[-30px"
         />
-
         <div className="flex flex-col">
           <SectionTitle first="What" second="Peaple think about me" />
-          <div className="1/2 flex gap-16">
+          <div className="flex flex-col lg:flex-row gap-16 lg:w-4/5">
             <Testimonial />
             <Testimonial />
           </div>
-          <div className="w-2/3 self-center flex flex-col space-y-7 items-center my-16">
+          <div className="lg:w-2/3 self-center flex flex-col space-y-7 items-center my-16">
             <div className="flex flex-col items-center">
               <p className="text-lg font-semibold text-center mb-4">
                 Have any idea or design, or an incomplete team that requires my

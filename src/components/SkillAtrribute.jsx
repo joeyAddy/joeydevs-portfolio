@@ -7,7 +7,7 @@ const SkillAtrribute = ({ img, title, description, iconBg }) => {
         <img src={img} alt={title} className="h-10 w-10" />
       </div>
       <h3 className="font-medium text-xl">{title}</h3>
-      <p>{description}</p>
+      <p className="w-[83%] lg:w-full">{description}</p>
     </div>
   );
 };
