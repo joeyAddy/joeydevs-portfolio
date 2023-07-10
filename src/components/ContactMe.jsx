@@ -59,8 +59,8 @@ const ContactMe = ({ open, setOpen }) => {
   return (
     <div
       className={`${
-        open ? "flex flex-col" : "hidden"
-      } absolute shadow-2xl bg-white rounded-lg w-96 bottom-[20px]`}
+        open ? "bottom-[20px]" : "bottom-[-100%]"
+      } flex flex-col absolute shadow-2xl bg-white rounded-lg w-[80%] lg:w-96 transition-all ease-in-out duration-500`}
     >
       <div className="w-full border-b border-solid px-6 py-2 flex items-center justify-between">
         <h3 className="text-center font-semibold ">Contact me!</h3>
@@ -80,17 +80,11 @@ const ContactMe = ({ open, setOpen }) => {
             name="name"
             required
             value={form.name}
-            class="peer block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            class="peer block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear"
             id="exampleInput90"
             placeholder="Name"
             onChange={handleChange}
           />
-          <label
-            class="pointer-events-none peer-focus:bg-white peer-focus:px-1 absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-            for="exampleInput90"
-          >
-            Name
-          </label>
         </div>
         <div class="relative mb-6" data-te-input-wrapper-init>
           <input
@@ -98,21 +92,15 @@ const ContactMe = ({ open, setOpen }) => {
             type="email"
             name="email"
             value={form.email}
-            class="peer block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            class="peer block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear"
             id="exampleInput91"
             placeholder="Email address"
             onChange={handleChange}
           />
-          <label
-            class="pointer-events-none peer-focus:bg-white peer-focus:px-1 absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-            for="exampleInput91"
-          >
-            Email address
-          </label>
         </div>
         <div class="relative mb-6" data-te-input-wrapper-init>
           <textarea
-            class="peer block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            class="peer block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear "
             id="exampleFormControlTextarea1"
             rows="3"
             name="body"
@@ -121,12 +109,6 @@ const ContactMe = ({ open, setOpen }) => {
             placeholder="Your message"
             onChange={handleChange}
           ></textarea>
-          <label
-            for="exampleFormControlTextarea1"
-            class="pointer-events-none peer-focus:bg-white peer-focus:px-1 absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >
-            Message
-          </label>
         </div>
         {/* <div class="mb-6 inline-block min-h-[1.5rem] justify-center pl-[1.5rem] md:flex">
           <input
