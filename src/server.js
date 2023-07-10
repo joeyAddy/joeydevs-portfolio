@@ -1,1 +1,1 @@
-export const url = "http://localhost:8080/";
+export const url = "https://nodemailer-86zk.onrender.com/";
