@@ -3,7 +3,7 @@ import React from "react";
 const ProjectCard = ({ img, title, description, className, link }) => {
   return (
     <div
-      className={`flex flex-col lg:flex-row gap-y-10 lg:gap-14 ${className}`}
+      className={`flex flex-col lg:flex-row gap-y-10 lg:gap-10 ${className}`}
     >
       <div className="w-full lg:w-[40%]">
         <img

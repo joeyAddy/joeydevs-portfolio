@@ -1,30 +1,53 @@
 import "./App.css";
 import Header from "./components/Header";
 import idea from "./assets/idea.png";
-import ktrack from "./assets/ktrack.png";
+import ktrack from "./assets/myeverydeal--portfolio.jpg";
+import myeverydeal from "./assets/ktrack.png";
+import pms from "./assets/property-management-system.jpg";
 import research from "./assets/user-research.png";
 import testing from "./assets/user-testing.png";
 import prototyping from "./assets/product-prototyping.png";
 import design from "./assets/visual-design.png";
 import thought from "./assets/thought.png";
 import mena from "./assets/mena.jpg";
+import isa from "./assets/isa.jpg";
 import skills from "./assets/skills.png";
 import SkillAtrribute from "./components/SkillAtrribute";
 import SectionTitle from "./components/SectionTitle";
 import ProjectCard from "./components/ProjectCard";
 import Testimonial from "./components/Testimonial";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ContactMe from "./components/ContactMe";
 
 function App() {
   const [open, setOpen] = useState(false);
   const [openCanvas, setOpenCanvas] = useState(false);
 
+  const contactRef = useRef(null);
+  const aboutRef = useRef(null);
+  const projectRef = useRef(null);
+
+  const scrollToAbout = ({ ref }) => {
+    aboutRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToContact = ({ ref }) => {
+    contactRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToProject = ({ ref }) => {
+    projectRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="text-gray-500 w-screen overflow-hidden relative">
+    <div className="text-gray-500 w-full overflow-x-hidden relative">
       <div className=" hidden lg:block">
-        <Header openCanvas={openCanvas} setOpenCanvas={setOpenCanvas} />
+        <Header
+          aboutRef={aboutRef}
+          contactRef={contactRef}
+          projectRef={projectRef}
+          openCanvas={openCanvas}
+          setOpenCanvas={setOpenCanvas}
+        />
       </div>
       <div
         className={`${
@@ -95,8 +118,11 @@ function App() {
           </button>
         </div>
       </div>
-      <section className="w-full relative min-h-screen h-auto skills bg-contain bg-no-repeat flex flex-col items-center justify-start">
-        <SectionTitle first="About me" className="mb-10" />
+      <section
+        ref={aboutRef}
+        className="w-full relative min-h-screen h-auto skills bg-contain bg-no-repeat flex flex-col items-center justify-start mb-16"
+      >
+        <SectionTitle first="About me" className="pt-10 lg:pt-16 mb-10" />
         <p className="text-xl font-normal text-center w-4/5 lg:w-1/2 fill-gray-500">
           <svg
             class="inline-block h-10 w-10 mr-2"
@@ -558,38 +584,34 @@ function App() {
             </g>{" "}
           </g>
         </svg>
-        <div className="flex flex-col w-full z-[1000]">
+        <div ref={projectRef} className="flex flex-col w-full z-[1000]">
           <div className="relative lg:left-36">
             <SectionTitle first="Checkout" second="my projects" />
           </div>
-          <div className="lg:w-11/12 space-y-14 lg:space-y-28">
+          <div className="lg:w-5/6 space-y-14 lg:space-y-28">
             <ProjectCard
-              img={ktrack}
+              img={pms}
               title="Project Management System"
               link="https://property-management-joeydevs.netlify.app"
               description="A property management system developed with React and Tailwind CSS, providing efficient management of properties and financials through a modern and visually appealing interface."
             />
             <ProjectCard
               className="lg:relative left-44"
-              img={ktrack}
+              img={myeverydeal}
               link="https://k-track.netlify.app"
               title="Real time delivery tracking"
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam atque recusandae commodi soluta ipsa maiores ducimus necessitatibus. Sunt ipsum nobis"
+              description="Built with React and React Boostrap, this a real-time parcel tracking website. Only landing page, login/register pages, and respective logic to get to the dasboard for dispatcher and customer. dummy accounts: email: customer@gmail.com; dispatcher@gmail.com, password for both: #Dddd123"
             />
             <ProjectCard
               img={ktrack}
-              title="Project Management System"
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam atque recusandae commodi soluta ipsa maiores ducimus necessitatibus. Sunt ipsum nobis"
+              link="https://myeverydealforum.netlify.app"
+              title="Myeverydeal Portfolio"
+              description="A one page portfolio for an e-commerce company. I built it with HTML, CSS, JavaScript and JS libraries"
             />
           </div>
         </div>
       </section>
-      <section className="overflow-hidden w-full px-10 lg:px-20 pb-10 relative min-h-screen h-auto skills bg-contain bg-no-repeat flex justify-start">
-        <img
-          src={idea}
-          alt=""
-          className="hidden lg:inline-block w-[65%] absolute left-[55%] top-[58%] -rotate-12"
-        />
+      <section className="overflow-hidden w-full px-10 lg:px-20 pb-10 relative min-h-screen h-auto bg-contain bg-no-repeat flex justify-start">
         <img
           src={thought}
           alt=""
@@ -604,29 +626,45 @@ function App() {
               testimony="Helped me with an AI content generating mobile app UI; I only described the idea and he came up with the idea. He's really good."
             />
             <Testimonial
+              img={isa}
               name="Isah Ahmadu"
               testimony="I told Joseph that I need a propery management website and he wipped off a great website for me. All I needed to do was the backend"
             />
           </div>
-          <div className="lg:w-2/3 self-center flex flex-col space-y-7 items-center my-16">
-            <div className="flex flex-col items-center">
-              <p className="text-lg font-semibold text-center mb-4">
-                Have any idea or design, or an incomplete team that requires my
-                expertise? Hire me and I will realize your ideas and designs
-              </p>
-              <div className="w-10 border-b-2 border-solid border-gray-600"></div>
-            </div>
-
-            <button
-              onClick={() => {
-                setOpen(!open);
-              }}
-              className="px-16 py-4 rounded-full bg-blue-600 text-white"
-            >
-              Contact Me!
-            </button>
-            <ContactMe open={open} setOpen={setOpen} />
+        </div>
+      </section>
+      <section
+        ref={contactRef}
+        className="overflow-hidden w-full px-10 lg:px-20 pb-10 relative h-auto bg-contain bg-no-repeat flex flex-col justify-start"
+      >
+        <img
+          src={idea}
+          alt=""
+          className="hidden lg:inline-block w-[65%] absolute left-[55%] top-[8%] -rotate-[25deg]"
+        />
+        <div
+          ref={contactRef}
+          className="lg:w-2/3 h-auto self-center flex flex-col space-y-7 items-center lg:my-16"
+        >
+          <div className="flex flex-col items-center">
+            <p className="text-lg font-semibold text-center mb-4">
+              Have any idea or design, or an incomplete team that requires my
+              expertise? Hire me and I will realize your ideas and designs
+            </p>
+            <div className="w-10 border-b-2 border-solid border-gray-600"></div>
           </div>
+
+          <button
+            onClick={() => {
+              setOpen(!open);
+            }}
+            className="px-16 py-4 rounded-full bg-blue-600 text-white"
+          >
+            Contact Me!
+          </button>
+          <ContactMe open={open} setOpen={setOpen} />
+        </div>
+        <div className="self-start flex flex-col">
           <div className="flex flex-col space-y-5 text-2xl mb-8">
             <a
               href=""
@@ -651,14 +689,23 @@ function App() {
             </a>
           </div>
           <ul className="flex space-x-8 font-semibold text-lg">
-            <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
-              <a href="">About</a>
+            <li
+              onClick={scrollToAbout}
+              className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
+            >
+              <a>About</a>
             </li>
-            <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
-              <a href="">Projects</a>
+            <li
+              onClick={scrollToProject}
+              className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
+            >
+              <a>Projects</a>
             </li>
-            <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
-              <a href="">Contact</a>
+            <li
+              onClick={scrollToContact}
+              className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
+            >
+              <a>Contact</a>
             </li>
           </ul>
         </div>

@@ -32,19 +32,19 @@ const Header = ({
       <ul className="hidden lg:flex space-x-8 font-semibold text-lg">
         <li
           onClick={scrollToAbout}
-          className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out"
+          className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
         >
           <a>About</a>
         </li>
         <li
           onClick={scrollToProject}
-          className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out"
+          className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
         >
           <a>Projects</a>
         </li>
         <li
           onClick={scrollToContact}
-          className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out"
+          className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
         >
           <a>Contact</a>
         </li>
@@ -52,19 +52,19 @@ const Header = ({
       <div className="hidden lg:flex space-x-5 text-2xl">
         <a
           href=""
-          className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out"
+          className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
         >
           <FaInstagram />
         </a>
         <a
           href=""
-          className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out"
+          className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
         >
           <FaFacebook />
         </a>
         <a
           href=""
-          className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out"
+          className="hover:text-blue-600 cursor-pointer hover:-translate-y-2 duration-300 ease-in-out"
         >
           <FaLinkedin />
         </a>

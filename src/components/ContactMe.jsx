@@ -59,7 +59,7 @@ const ContactMe = ({ open, setOpen }) => {
   return (
     <div
       className={`${
-        open ? "bottom-[20px]" : "bottom-[-100%]"
+        open ? "bottom-[20px]" : "bottom-[-150%]"
       } flex flex-col absolute shadow-2xl bg-white rounded-lg w-[80%] lg:w-96 transition-all ease-in-out duration-500`}
     >
       <div className="w-full border-b border-solid px-6 py-2 flex items-center justify-between">
