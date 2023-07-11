@@ -1,8 +1,8 @@
 import React from "react";
 
-const SectionTitle = ({ first, second }) => {
+const SectionTitle = ({ first, second, className }) => {
   return (
-    <div className="pt-20 lg:pt-36 mb-16">
+    <div className={`pt-20 lg:pt-36 mb-16 ${className}`}>
       <h3 className="text-4xl font-[200] py-4">
         {first} <br /> {second}
       </h3>
