@@ -9,13 +9,13 @@ const Header = ({
   contactRef,
   projectRef,
 }) => {
-  const scrollToAbout = ({ ref }) => {
+  const scrollToAbout = () => {
     aboutRef.current.scrollIntoView({ behavior: "smooth" });
   };
-  const scrollToContact = ({ ref }) => {
+  const scrollToContact = () => {
     contactRef.current.scrollIntoView({ behavior: "smooth" });
   };
-  const scrollToProject = ({ ref }) => {
+  const scrollToProject = () => {
     projectRef.current.scrollIntoView({ behavior: "smooth" });
   };
   return (

@@ -19,6 +19,7 @@ import Testimonial from "./components/Testimonial";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { useRef, useState } from "react";
 import ContactMe from "./components/ContactMe";
+import SideBar from "./components/SideBar";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -28,13 +29,13 @@ function App() {
   const aboutRef = useRef(null);
   const projectRef = useRef(null);
 
-  const scrollToAbout = ({ ref }) => {
+  const scrollToAbout = () => {
     aboutRef.current.scrollIntoView({ behavior: "smooth" });
   };
-  const scrollToContact = ({ ref }) => {
+  const scrollToContact = () => {
     contactRef.current.scrollIntoView({ behavior: "smooth" });
   };
-  const scrollToProject = ({ ref }) => {
+  const scrollToProject = () => {
     projectRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -49,54 +50,13 @@ function App() {
           setOpenCanvas={setOpenCanvas}
         />
       </div>
-      <div
-        className={`${
-          openCanvas === true ? "right-0" : "right-[-100%]"
-        } flex flex-col w-3/4 h-screen absolute top-0 bg-blue-600 z-[1100] transition-all ease-in-out duration-300 p-10 text-white`}
-      >
-        <span
-          onClick={() => {
-            setOpenCanvas(false);
-          }}
-          className="font-semibold self-end cursor-pointer rounded-md px-2 bg-red-600 w-fit text-white mb-6"
-        >
-          x
-        </span>
-        <ul className="flex flex-col space-y-4 font-semibold text-lg mb-10">
-          <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
-            <a href="">About</a>
-          </li>
-          <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
-            <a href="">Projects</a>
-          </li>
-          <li className="hover:text-blue-600 hover:-translate-y-2 duration-300 ease-in-out">
-            <a href="">Contact</a>
-          </li>
-        </ul>
-        <div className="flex flex-col space-y-5 text-2xl mb-8">
-          <a
-            href=""
-            className="hover:text-blue-600 hover:-translate-y-2 w-fit flex items-center space-x-2 duration-300 ease-in-out"
-          >
-            <FaInstagram />
-            <span className="text-sm">Follow me on Instagram</span>
-          </a>
-          <a
-            href=""
-            className="hover:text-blue-600 hover:-translate-y-2 w-fit flex items-center space-x-2 duration-300 ease-in-out"
-          >
-            <FaFacebook />
-            <span className="text-sm">Follow me on Facebook</span>
-          </a>
-          <a
-            href=""
-            className="hover:text-blue-600 hover:-translate-y-2 w-fit flex items-center space-x-2 duration-300 ease-in-out"
-          >
-            <FaLinkedin />
-            <span className="text-sm">Follow me on LinkedIn</span>
-          </a>
-        </div>
-      </div>
+      <SideBar
+        setOpenCanvas={setOpenCanvas}
+        openCanvas={openCanvas}
+        aboutRef={aboutRef}
+        contactRef={contactRef}
+        projectRef={projectRef}
+      />
       <div className="w-full lg:min-h-screen lg:h-auto hero bg-contain bg-no-repeat">
         <div className="lg:hidden">
           <Header openCanvas={openCanvas} setOpenCanvas={setOpenCanvas} />
@@ -173,9 +133,10 @@ function App() {
           </svg>
         </p>
         <SectionTitle first="My skill set" className="pt-10 lg:pt-16" />
-        <div className="grid grid-cols-2 lg:grid-cols-9 w-3/4 gap-6 justify-center items-center">
+        <div className="grid grid-cols-3 lg:grid-cols-9 w-3/4 gap-6 justify-center items-center">
           <svg
             viewBox="0 0 32 32"
+            className="h-20 lg:h-auto"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -201,6 +162,7 @@ function App() {
           </svg>
           <svg
             fill="#000000"
+            className="h-20 lg:h-auto"
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -216,6 +178,7 @@ function App() {
             </g>
           </svg>
           <svg
+            className="h-20 lg:h-auto"
             viewBox="-52.5 0 361 361"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -297,6 +260,7 @@ function App() {
             </g>
           </svg>
           <svg
+            className="h-20 lg:h-auto"
             viewBox="-52.5 0 361 361"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -372,6 +336,7 @@ function App() {
             </g>
           </svg>
           <svg
+            className="h-20 lg:h-auto"
             xmlns="http://www.w3.org/2000/svg"
             aria-label="JavaScript"
             role="img"
@@ -390,9 +355,9 @@ function App() {
             </g>
           </svg>
           <div className="flex flex-col justify-center items-center">
-            <h3 className="font-extrabold text-black text-xl">Tailwind</h3>
+            <h3 className="font-extrabold text-black lg:text-xl">Tailwind</h3>
             <svg
-              className="fill-blue-400 w-20 "
+              className="fill-blue-400 w-20"
               viewBox="0 0 15 15"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -416,7 +381,7 @@ function App() {
             </svg>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <h3 className="font-extrabold text-black text-xl">Bootstrap</h3>
+            <h3 className="font-extrabold text-black lg:text-xl">Bootstrap</h3>
             <svg
               className="w-20 fill-purple-400"
               viewBox="0 0 24 24"
@@ -441,6 +406,7 @@ function App() {
             </svg>
           </div>
           <svg
+            className="h-20 lg:h-auto"
             viewBox="0 -26 256 256"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -486,6 +452,7 @@ function App() {
             </g>
           </svg>
           <svg
+            className="h-20 lg:h-auto"
             viewBox="0 -32 256 256"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -644,7 +611,7 @@ function App() {
         />
         <div
           ref={contactRef}
-          className="lg:w-2/3 h-auto self-center flex flex-col space-y-7 items-center lg:my-16"
+          className="lg:w-2/3 h-auto self-center flex flex-col space-y-7 items-center my-10 lg:my-16"
         >
           <div className="flex flex-col items-center">
             <p className="text-lg font-semibold text-center mb-4">
