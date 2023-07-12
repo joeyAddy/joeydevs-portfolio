@@ -595,7 +595,7 @@ function App() {
             <Testimonial
               img={isa}
               name="Isah Ahmadu"
-              testimony="I told Joseph that I need a propery management website and he wipped off a great website for me. All I needed to do was the backend"
+              testimony="I told Joseph that I need a property management website and he wipped off a great website for me. All I needed to do was the backend"
             />
           </div>
         </div>
